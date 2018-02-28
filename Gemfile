@@ -23,12 +23,29 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+gem 'jquery-turbolinks', '~> 2.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+# Additionnal gem
+gem 'cancancan', '~> 1.13', '>= 1.13.1'
+gem 'rolify', '~> 5.2'
+gem 'devise', '~> 4.4', '>= 4.4.1'
+gem 'validates_email_format_of', '~> 1.6', '>= 1.6.3'
+
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+
+gem 'ckeditor', '~> 4.1', '>= 4.1.6'
+gem 'kaminari', '~> 0.16.3'
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem 'mail_form', '~> 1.5', '>= 1.5.1'
+
+gem 'faker', '~> 1.8', '>= 1.8.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
