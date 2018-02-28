@@ -1,0 +1,76 @@
+<div class="jumbotron">
+  <div class="container">
+
+    <div class="row">
+      <h2><strong><%= @user.username %></strong></h2>
+      <div class="col-md-3"><%= image_tag(@user.avatar.url(:thumb)) %></div>
+      <div class=" col-md-9">
+        <table class="table table-user-information">
+          <tbody>
+            <tr>
+              <td><strong>Email:</strong></td>
+              <td><%= mail_to @user.email %></td>
+            </tr>
+
+            <tr>
+              <td><strong>Last name:</strong></td>
+              <td><%= @user.last_name %></td>
+            </tr>
+
+            <tr>
+              <td><strong>First name:</strong></td>
+              <td><%= @user.first_name %></td>
+            </tr>
+
+            <tr>
+              <td><strong>Birthdate:</strong></td>
+              <td><%= @user.birthdate %></td>
+            </tr>
+
+            <tr>
+              <td><strong>Gender:</strong></td>
+              <td>
+              <% if @user.gender.nil? %>
+              <% elsif @user.gender? %>
+                Male
+              <% else %>
+                Female
+              <% end %>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>Full address:</strong></td>
+              <td>
+                <%= @user.address %>
+                <br>
+                <%= @user.city %>
+                <br>
+                <%= @user.country %>
+                <br>
+                <%= @user.post_code %>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>Biography:</strong></div>
+      <div class="panel-body">
+        <em><%= @user.biography %></em>
+      </div>
+    </div>
+    <div class="form-actions text-right">
+      <%= link_to 'Edit profile', edit_user_registration_path, class:'btn btn-primary btn-lg' %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <%= render 'layouts/flash' %>
+</div>
