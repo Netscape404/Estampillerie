@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301085850) do
+ActiveRecord::Schema.define(version: 20180301092648) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -29,6 +29,31 @@ ActiveRecord::Schema.define(version: 20180301085850) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "thumbnail_file_name"
+    t.string "thumbnail_content_type"
+    t.integer "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
+    t.string "title"
+    t.text "description"
+    t.text "specifications"
+    t.integer "difficulty"
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.bigint "subcategory_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_projects_on_category_id"
+    t.index ["subcategory_id"], name: "index_projects_on_subcategory_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "projects_tags", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "project_id", null: false
+    t.index ["tag_id", "project_id"], name: "index_projects_tags_on_tag_id_and_project_id"
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -111,5 +136,8 @@ ActiveRecord::Schema.define(version: 20180301085850) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "projects", "categories"
+  add_foreign_key "projects", "subcategories"
+  add_foreign_key "projects", "users"
   add_foreign_key "subcategories", "categories"
 end

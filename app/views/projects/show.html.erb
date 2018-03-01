@@ -1,0 +1,42 @@
+<p><%= image_tag @project.thumbnail.url(:medium) %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @project.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Specifications:</strong>
+  <%= @project.specifications %>
+</p>
+
+<p>
+  <strong>Difficulty:</strong>
+  <%= @project.difficulty %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @project.category.name %>
+</p>
+
+<p>
+  <strong>Subategory:</strong>
+  <%= @project.subcategory.name %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <% @project.tags.each do |t| %>
+    <%= t.name %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project), class:'btn btn-primary' %>
+<%= link_to 'Back', projects_path, class:'btn btn-default' %>
+<%= button_to "delete", @project, :method => :delete, confirm: 'Are you sure?', class:'btn btn-danger' %>

@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :subcategory_name %>
+    <%= form.label :category_id %>
+    <%= form.select :category_id, Category.all.collect {|p| [ p.name, p.id ] }, id: :subcategory_category_id %>
   </div>
 
   <div class="field">
-    <%= form.label :category_id %>
-    <%= form.text_field :category_id, id: :subcategory_category_id %>
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :subcategory_name %>
   </div>
 
   <div class="actions">

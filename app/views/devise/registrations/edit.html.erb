@@ -16,7 +16,7 @@
             <%= f.file_field :cover_picture, class:'form-control' %>
           </div>
 
-          <div class="form-group col-md-5">
+          <div class="form-group col-md-5 col-md-offset-1">
             <%= f.label :tags, "Expertises :" %>
             <% for tag in Tag.all %>
               <%= check_box_tag "user[tag_ids][]", tag.id, @user.tags.include?(tag) %>
