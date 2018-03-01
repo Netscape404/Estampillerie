@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
-  resources :tutorials
-  resources :articles
-  resources :projects
-  resources :tags
-  resources :subcategories
-  resources :categories
   mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :users, controllers: {
           sessions: 'users/sessions',
           registrations: 'users/registrations'
         }
-
   resources :users
+
+  resources :projects do
+    resources :comments
+  end
+
+  resources :tags
+  resources :categories
+  resources :subcategories
+
+  resources :tutorials
+  resources :articles
 
   root    'pages#home'
   get     'pages/about'

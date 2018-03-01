@@ -60,6 +60,8 @@
     <% end %>
   </p>
 
+  <%= render 'comments/comment' %>
+
   <%= link_to 'Edit', edit_project_path(@project), class:'btn btn-primary' %>
   <%= link_to 'Back', projects_path, class:'btn btn-default' %>
   <%= button_to "delete", @project, :method => :delete, confirm: 'Are you sure?', class:'btn btn-danger' %>

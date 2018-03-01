@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   belongs_to                :user
   belongs_to                :category
   belongs_to                :subcategory
+  has_many                  :comments
   has_many                  :project_pictures, dependent: :destroy
   has_many                  :project_files, dependent: :destroy
 
@@ -17,5 +18,5 @@ class Project < ApplicationRecord
 
 
   enum difficulty: %i[beginner intermediate hard expert]
-  
+
 end
