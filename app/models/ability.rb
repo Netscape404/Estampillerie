@@ -10,7 +10,19 @@ class Ability
     #   else
     #     can :read, :all
     #   end
-    #
+
+    alias_action :create, :read, :update, :destroy, to: :crud
+
+    can :read, [Project, Article, Tutorial]
+    can :show, [User]
+    can :crud, []
+    if user && user.id
+      can :crud, Comment, {user_id: user.id}
+      if user.has_role? :admin
+        can :manage, :all
+      end
+    end
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

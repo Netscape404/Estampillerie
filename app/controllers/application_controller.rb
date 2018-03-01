@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: %i[last_name first_name birthdate gender biography address post_code city country])
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    #Redirect to the last page
+    redirect_to request.referrer, :alert => exception.message
+  end
+
 end

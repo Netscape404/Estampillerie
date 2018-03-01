@@ -1,5 +1,21 @@
 fr:
   activerecord:
+    attributes:
+      project/difficulties:
+        beginner: Débutant
+        intermediate: Intermédiaire
+        hard: Difficile
+        expert: Expert
+      article/categories:
+        media: Presse
+        estampillerie: Estampillerie
+        new_project: Nouveau projet
+        partnership: Partenariat
+        miscellaneous: Divers
+      tutorial/categories:
+        ul_advise: Conseil de mise en ligne
+        cao_file: Utilisation des fichiers de conceptions
+        cao_product: Réalisation d'un fichier de conception
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'
