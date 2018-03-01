@@ -1,0 +1,25 @@
+<% if cookies[:saved_subscriber] %>
+  Thanks !
+<% else %>
+  <h4>SUBSCRIBE TO OUR NEWSLETTER !</h4>
+  <%= form_for Lead.new, class: 'newsletter' do |form| %>
+    <div class="form-group col-md-3 col-md-offset-2">
+      <% if current_user %>
+        <%= form.text_field :name, class:'form-control', value: current_user.username %>
+      <% else %>
+        <%= form.text_field :name, class:'form-control', placeholder: 'John doe' %>
+      <% end %>
+    </div>
+    <div class="input-group col-md-5">
+      <% if current_user %>
+        <%= form.text_field :email, class:'form-control', value: current_user.email %>
+      <% else %>
+        <%= form.text_field :email, class:'form-control', placeholder: 'Your-mail@Example.org' %>
+      <% end %>
+    <span class="input-group-btn">
+      <%= form.submit "Sign up", class:'btn btn-default' %>
+    </span>
+  </div>
+  <br><br>
+  <% end %>
+<% end %>

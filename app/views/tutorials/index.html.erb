@@ -30,6 +30,8 @@
     <% end %>
   </div>
 
-  <%= link_to 'New Tutorial', new_tutorial_path, class:'btn btn-primary' %>
+  <% if current_user && current_user.has_role?(:admin) %>
+    <%= link_to 'New Tutorial', new_tutorial_path, class:'btn btn-primary' %>
+  <% end %>
 
 </div>

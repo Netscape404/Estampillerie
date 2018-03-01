@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   match '/contacts', to: 'contacts#new', via: 'get'
   resources "contacts", only: [:new, :create]
 
+  resources :leads
+
   root    'pages#home'
   get     'pages/about'
   get     'pages/termsofservice'

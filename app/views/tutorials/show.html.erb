@@ -37,7 +37,10 @@
   <%= @tutorial.user.username %>
 </p>
 
-  <%= link_to 'Edit', edit_tutorial_path(@tutorial), class:'btn btn-primary' %> |
-  <%= link_to 'Back', tutorials_path, class:'btn btn-default' %>
+<% if current_user && current_user.has_role?(:admin) %>
+  <%= link_to 'Edit', edit_tutorial_path(@tutorial), class:'btn btn-primary' %>
+  <%= button_to "delete", @tutorial, :method => :delete, confirm: 'Are you sure?', class:'btn btn-danger' %>
+<% end %>
+<%= link_to 'Back', tutorials_path, class:'btn btn-default' %>
 
 </div>
