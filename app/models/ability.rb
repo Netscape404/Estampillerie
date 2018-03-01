@@ -15,7 +15,7 @@ class Ability
 
     can :read, [Project, Article, Tutorial]
     can :show, [User]
-    can :crud, []
+    can :crud, [Contact]
     if user && user.id
       can :crud, Comment, {user_id: user.id}
       if user.has_role? :admin

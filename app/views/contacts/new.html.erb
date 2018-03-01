@@ -1,0 +1,55 @@
+<div class="jumbotron">
+  <div class="container">
+  </div>
+</div>
+
+<div class="container">
+  <%= render 'layouts/flash' %>
+	<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="well well-sm">
+        <%= form_for @contact, :html => {:class => 'form-horizontal' } do |form| %>
+          <fieldset>
+            <legend class="text-center">Contact Us !</legend>
+
+						<!-- Name input-->
+						<div class="form-group">
+							<div class="col-md-10 col-md-offset-1">
+								<% if current_user %>
+									<%= form.text_field :name, class:'form-control', value: current_user.username, readonly: true %>
+								<% else %>
+									<%= form.text_field :name, class:'form-control', placeholder: 'John Doe', require:true %>
+								<% end %>
+							</div>
+						</div>
+
+            <!-- Email input-->
+            <div class="form-group">
+              <div class="col-md-10 col-md-offset-1">
+                <% if current_user %>
+                  <%= form.text_field :email, class:'form-control', value: current_user.email, readonly: true %>
+                <% else %>
+                  <%= form.text_field :email, class:'form-control', placeholder: 'Your-mail@Example.org', require:true %>
+                <% end %>
+              </div>
+            </div>
+
+            <!-- Message body -->
+            <div class="form-group">
+              <div class="col-md-10 col-md-offset-1">
+                <%= form.text_area :message, rows:'8', :as => :text, class:'form-control', placeholder:"Please enter your message here ...", :required => true %>
+              </div>
+            </div>
+
+            <!-- Form actions -->
+            <div class="form-group">
+              <div class="col-md-10 col-md-offset-1 text-right">
+                <button type="submit" class="btn btn-primary btn-md">Send</button>
+              </div>
+            </div>
+          </fieldset>
+        <% end %>
+      </div>
+    </div>
+	</div>
+</div>

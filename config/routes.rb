@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :tutorials
   resources :articles
 
+  match '/contacts', to: 'contacts#new', via: 'get'
+  resources "contacts", only: [:new, :create]
+
   root    'pages#home'
   get     'pages/about'
   get     'pages/termsofservice'
