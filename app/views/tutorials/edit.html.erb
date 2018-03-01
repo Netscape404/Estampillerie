@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="text-center">Editing Tutorial</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <%= render 'form', tutorial: @tutorial %>
+
+  <%= link_to 'Show', @tutorial, class:'btn btn-default' %> |
+  <%= link_to 'Back', tutorials_path, class:'btn btn-default' %>
+
+</div>

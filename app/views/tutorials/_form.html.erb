@@ -1,0 +1,43 @@
+<%= form_with(model: tutorial, local: true) do |form| %>
+  <%= render 'layouts/flash' %>
+  <% if tutorial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tutorial.errors.count, "error") %> prohibited this tutorial from being saved:</h2>
+
+      <ul>
+      <% tutorial.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :category %>
+    <%= form.select :category, Tutorial.categories.keys %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :tutorial_title, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :thumbnail %>
+    <%= form.file_field :thumbnail, id: :tutorial_thumbnail, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :tutorial_description, rows: 10, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :content %>
+    <%= form.cktext_area :content, id: :tutorial_content %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit 'Submit', class:'btn btn-primary' %>
+  </div>
+<% end %>

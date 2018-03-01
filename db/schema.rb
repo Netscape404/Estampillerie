@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301110056) do
+ActiveRecord::Schema.define(version: 20180301120318) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "category"
@@ -124,6 +124,21 @@ ActiveRecord::Schema.define(version: 20180301110056) do
     t.index ["tag_id", "user_id"], name: "index_tags_users_on_tag_id_and_user_id"
   end
 
+  create_table "tutorials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "category"
+    t.string "title"
+    t.string "thumbnail_file_name"
+    t.string "thumbnail_content_type"
+    t.integer "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
+    t.text "description"
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tutorials_on_user_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -180,4 +195,5 @@ ActiveRecord::Schema.define(version: 20180301110056) do
   add_foreign_key "projects", "subcategories"
   add_foreign_key "projects", "users"
   add_foreign_key "subcategories", "categories"
+  add_foreign_key "tutorials", "users"
 end

@@ -1,0 +1,43 @@
+<div class="jumbotron">
+  <div class="container">
+  </div>
+</div>
+
+<div class="container">
+
+  <%= render 'layouts/flash' %>
+
+  <p>
+  <strong>Category:</strong>
+  <%= @tutorial.category %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @tutorial.title %>
+</p>
+
+<p>
+  <strong>Thumbnail:</strong>
+  <%= image_tag @tutorial.thumbnail(:medium) %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @tutorial.description %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= raw @tutorial.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @tutorial.user.username %>
+</p>
+
+  <%= link_to 'Edit', edit_tutorial_path(@tutorial), class:'btn btn-primary' %> |
+  <%= link_to 'Back', tutorials_path, class:'btn btn-default' %>
+
+</div>

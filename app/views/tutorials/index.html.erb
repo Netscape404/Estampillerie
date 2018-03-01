@@ -1,0 +1,35 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="text-center">Tutorials</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <%= render 'layouts/flash' %>
+
+  <div class="row">
+    <% if @tutorials.present? %>
+      <% @tutorials.each do |tutorial| %>
+        <div class="col-sm-4 col-md-4">
+          <div class="thumbnail">
+            <img src="<%= tutorial.thumbnail.url(:medium) %>" alt="thumbnail">
+            <div class="caption">
+              <h3><%= tutorial.title %></h3>
+              <p><%= tutorial.description %></p>
+              <hr>
+              <p><%= tutorial.category %></p>
+              <p><a href="#"><%= tutorial.user.username %></a></p>
+              <p><%= link_to 'Show', tutorial, class:'btn btn-primary' %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h5>No tutorial has been published yet</h5>
+    <% end %>
+  </div>
+
+  <%= link_to 'New Tutorial', new_tutorial_path, class:'btn btn-primary' %>
+
+</div>

@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <div class="container">
-    <h1>Editing Subcategory</h1>
+    <h1 class="text-center">Editing Subcategory</h1>
   </div>
 </div>
 
@@ -8,7 +8,7 @@
 
   <%= render 'form', subcategory: @subcategory %>
 
-  <%= link_to 'Show', @subcategory %> |
-  <%= link_to 'Back', subcategories_path %>
+  <%= link_to 'Show', @subcategory, class:'btn btn-default' %> |
+  <%= link_to 'Back', subcategories_path, class:'btn btn-default' %>
 
 </div>
