@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301095831) do
+ActiveRecord::Schema.define(version: 20180301110056) do
+
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "category"
+    t.string "title"
+    t.string "thumbnail_file_name"
+    t.string "thumbnail_content_type"
+    t.integer "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
+    t.text "description"
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -158,6 +173,7 @@ ActiveRecord::Schema.define(version: 20180301095831) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "articles", "users"
   add_foreign_key "project_files", "projects"
   add_foreign_key "project_pictures", "projects"
   add_foreign_key "projects", "categories"

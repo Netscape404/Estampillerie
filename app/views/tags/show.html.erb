@@ -1,9 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron">
+  <div class="container">
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @tag.name %>
-</p>
+<div class="container">
 
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+  <%= render 'layouts/flash' %>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @tag.name %>
+  </p>
+
+  <%= link_to 'Edit', edit_tag_path(@tag) %> |
+  <%= link_to 'Back', tags_path %>
+
+</div>

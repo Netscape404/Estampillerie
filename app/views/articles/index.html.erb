@@ -1,0 +1,29 @@
+<div class="container">
+
+  <h2>Articles</h2>
+
+    <div class="row">
+      <% if @articles.present? %>
+        <% @articles.each do |article| %>
+          <div class="col-sm-4 col-md-4">
+            <div class="thumbnail">
+              <img src="<%= article.thumbnail.url(:medium) %>" alt="thumbnail">
+              <div class="caption">
+                <h3><%= article.title %></h3>
+                <p><%= article.description %></p>
+                <hr>
+                <p><%= article.category %></p>
+                <p><a href="#"><%= article.user.username %></a></p>
+                <p><%= link_to 'Show', article, class:'btn btn-primary' %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <h5>No article has been published yet</h5>
+      <% end %>
+    </div>
+
+  <%= link_to 'New Article', new_article_path, class:'btn btn-primary' %>
+
+</div>

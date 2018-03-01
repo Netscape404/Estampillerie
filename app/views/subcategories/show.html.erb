@@ -1,14 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron">
+  <div class="container">
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @subcategory.name %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Category:</strong>
-  <%= @subcategory.category.name %>
-</p>
+  <%= render 'layouts/flash' %>
 
-<%= link_to 'Edit', edit_subcategory_path(@subcategory) %> |
-<%= link_to 'Back', subcategories_path %>
+  <p>
+    <strong>Name:</strong>
+    <%= @subcategory.name %>
+  </p>
+
+  <p>
+    <strong>Category:</strong>
+    <%= @subcategory.category.name %>
+  </p>
+
+  <%= link_to 'Edit', edit_subcategory_path(@subcategory) %> |
+  <%= link_to 'Back', subcategories_path %>
+
+</div>

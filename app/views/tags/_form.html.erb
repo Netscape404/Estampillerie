@@ -1,4 +1,5 @@
 <%= form_with(model: tag, local: true) do |form| %>
+  <%= render 'layouts/flash' %>
   <% if tag.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
