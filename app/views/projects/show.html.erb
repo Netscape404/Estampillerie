@@ -6,6 +6,13 @@
 </p>
 
 <p>
+  <strong>Pictures:</strong>
+  <% @project.project_pictures.all.each do |t| %>
+    <%= image_tag t.picture.url(:medium) %>
+  <% end %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @project.description %>
 </p>
@@ -34,6 +41,13 @@
   <strong>Tag:</strong>
   <% @project.tags.each do |t| %>
     <%= t.name %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Files:</strong>
+  <% @project.project_files.all.each do |t| %>
+    <%= link_to "Download", t.file.url(:original, false) %>
   <% end %>
 </p>
 

@@ -1,63 +1,70 @@
-<div class="container">
+<%= form_with(model: project, local: true) do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-  <%= form_with(model: project, local: true) do |form| %>
-    <% if project.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-        <ul>
-        <% project.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="form-group">
-      <%= form.label :thumbnail %>
-      <%= form.file_field :thumbnail, id: :project_thumbnail %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :title %>
-      <%= form.text_field :title, id: :project_title %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :description %>
-      <%= form.text_area :description, id: :project_description %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :specifications %>
-      <%= form.text_area :specifications, id: :project_specifications %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :difficulty %>
-      <%= form.select :difficulty, Project.difficulties.keys.to_a.map { |d| [d.humanize, d] },id: :project_difficulty %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :category_id %>
-      <%= form.collection_select :category_id, Category.order(:name), :id, :name, {include_blank: true}, {:id => "project_category_id"} %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :subcategory_id %>
-      <%= form.grouped_collection_select :subcategory_id, Category.order(:name), :subcategories, :name, :id, :name, {include_blank: true}, {:id=> "project_subcategory_id"} %>
-    </div>
-
-    <div class="form-group">
-      <% for tag in Tag.all %>
-        <%= check_box_tag "project[tag_ids][]", tag.id, @project.tags.include?(tag) %>
-        <%= tag.name %>
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
-    </div>
-
-    <div class="form-actions">
-      <%= form.submit %>
+      </ul>
     </div>
   <% end %>
 
-</div>
+  <div class="form-group">
+    <%= form.label :thumbnail %>
+    <%= form.file_field :thumbnail, id: :project_thumbnail, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :project_title, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :project_pictures %>
+    <%= form.file_field :picture, multiple: true, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :project_description, rows: 10, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :specifications %>
+    <%= form.text_area :specifications, id: :project_specifications, rows: 10, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :difficulty %>
+    <%= form.select :difficulty, Project.difficulties.keys.to_a.map { |d| [d.humanize, d] },id: :project_difficulty %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, Category.order(:name), :id, :name, {include_blank: true}, {:id => "project_category_id"} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :subcategory_id %>
+    <%= form.grouped_collection_select :subcategory_id, Category.order(:name), :subcategories, :name, :id, :name, {include_blank: true}, {:id=> "project_subcategory_id"} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :tags, "Expertises :" %>
+    <% for tag in Tag.all %>
+      <%= check_box_tag "project[tag_ids][]", tag.id, @project.tags.include?(tag) %>
+      <%= tag.name %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :project_files %>
+    <%= form.file_field :file, multiple: true, class:'form-control' %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit 'Update', class:'btn btn-primary' %>
+  </div>
+<% end %>
